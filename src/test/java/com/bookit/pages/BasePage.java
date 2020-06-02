@@ -17,12 +17,14 @@ public abstract class BasePage {
 
     protected WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 20);
     protected Actions actions=new Actions(Driver.getDriver());
+
+
     public BasePage(){
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
     public void goToSelfPage(){
         wait.until(ExpectedConditions.elementToBeClickable(my)).click();
-       actions.moveToElement(my).pause(2000).build().perform();
+       actions.moveToElement(my).pause(2000).click(self).perform();
     }
 }

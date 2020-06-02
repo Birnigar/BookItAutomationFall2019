@@ -25,7 +25,7 @@ Feature: Create student
 #  we just called ensureUserDoesnotExist method and deleted user if already exists
 
 
-  @create-student_3
+  @create-student_3  @ui  @db
   Scenario: 2. Create student as a teacher and verify status code 201
     Given authorization token is provided for "teacher"
     And user accepts content type as "application/json"
