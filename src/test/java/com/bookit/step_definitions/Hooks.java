@@ -1,5 +1,6 @@
 package com.bookit.step_definitions;
 
+import com.bookit.utilities.ConfigurationReader;
 import com.bookit.utilities.DBUtility;
 import com.bookit.utilities.Driver;
 import com.bookit.utilities.Environment;
@@ -29,7 +30,10 @@ public class Hooks {
      */
     @Before("@ui")
     public void uiSetup() {
-        Driver.getDriver().manage().window().maximize();
+        String browser = ConfigurationReader.getProperty("browser").toLowerCase();
+        if (!browser.contains("ios") && !browser.contains("android")){
+            Driver.getDriver().manage().window().maximize();
+        }
     }
 
     /**
@@ -39,7 +43,4 @@ public class Hooks {
     public void uiTearDown() {
         Driver.closeDriver();
     }
-
-
-
 }
